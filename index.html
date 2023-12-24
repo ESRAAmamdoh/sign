@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    
+    <title>Document</title>
+</head>
+<body>
+<div class="contain">
+    <div class="box signin">
+        <h2>Already Have Account</h2>
+        <button class="btnSignin btn my-2">sign in</button>
+    </div>
+    <div class="box signup">
+        <h2>Don't You Have Account ?</h2>
+        <button  class="btnSignup btn my-2">sign up</button>
+    </div>
+<div class="myform">
+    <div class="form formlogin">
+        <form>
+            <h3>Sign In</h3>
+            <input type="text" id="emailsignin" class="form-control emailvalue" placeholder=" email">
+            <input type="password" id="passsignin" class="form-control my-4 passValue" placeholder=" password">
+            <div class="alert alert-danger alr">invalid </div>
+            <!-- <input onclick="main()" type="submit" class="btn btn-danger px-5 mb-4 py-3"value="Login"> -->
+            <!-- <button onclick="main()" class="btn px-5 mb-4 py-3 btn-danger login">Login</button> -->
+            <button onclick="main()" class="btn btn-danger px-5 mb-4 py-3 login"> login</button>
+            <a href="#" class="forget">Forget password</a>
+        </form>
+    </div>
+    <div class="form formsignup">
+        <form>
+            <h3>Sign UP</h3>
+            <input type="text" class=" form-control newfocus " id="nameValue" placeholder=" UserName">
+            <input type="text" class="form-control newfocus my-4 " id="emailsignup" placeholder=" email">
+            <input type="password" class="form-control newfocus mb-4 " id="passsignup" placeholder=" password">
+            <!-- <input type="password" class="form-control newfocus  my-4 " id="confirmsighup" placeholder=" confirm"> -->
+            <div class="alert alert-danger alrt">invalid </div>
+            <!-- <input type="submit" class="btn btn-success px-5  py-3" value="Register"> -->
+            <button onclick="mainSignUp()" class="btn px-5 mb-4 py-3 btn-danger signup">Register</button>
+         
+        </form>
+    </div>
+
+</div>
+
+
+</div>
+
+
+<script src="js/main.js"></script>
+<script src="js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
