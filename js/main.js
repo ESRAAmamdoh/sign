@@ -13,7 +13,19 @@ btn_signin.onclick= function(){
 var email_value=document.getElementById('emailsignin')
 var pass_value=document.getElementById('passsignin')
 
-var listsignin=[]
+var email_signup=document.getElementById('emailsignup')
+var pass_signup=document.getElementById('passsignup')
+
+var name_signup=document.getElementById('nameValue')
+
+var users=[]
+if(localStorage.getItem('users')!=null){
+    users=JSON.parse(localStorage.getItem('users'))
+   
+}
+else{
+    localStorage.setItem('users',JSON.stringify(users))
+}
 
 function main(){
     addlist()
@@ -24,16 +36,29 @@ function main(){
 
 function addlist(){
   var sign_object={
-     
         email:email_value.value,
         pass:pass_value.value
     }
     if(checkemail(email_value.value)&&checkepass(pass_value.value)){
-        listsignin.push(sign_object)
-        document.querySelector('.alr').style.display='none'
+        users=JSON.parse(localStorage.getItem('users'));
+        match_arr=users.filter((el)=> el.email==sign_object.email && el.pass == sign_object.pass)
+        if(match_arr.length)
+        {
+            //success
+            document.querySelector('.alr').style.display='none'
+            document.querySelector('.sucss').style.display='block'
+        }
+        else{
+            //failed
+            document.querySelector('.alr').style.display='block'
+            document.querySelector('.sucss').style.display='none'
+        }
+        
+        
     }
     else{
         document.querySelector('.alr').style.display='block'
+        document.querySelector('.sucss').style.display='none'
     }
    
 }
@@ -51,20 +76,13 @@ function checkepass(pass){
 }
 ///////////////////////////////////////////////////
 
-var email_signup=document.getElementById('emailsignup')
-var pass_signup=document.getElementById('passsignup')
-
-var name_signup=document.getElementById('nameValue')
-
 
 
 var listsignup=[]
 
 function mainSignUp(){
-    addListSignUp()
-   console.log(listsignup)
-   clearindexx()
- 
+    addListSignUp();
+    clearindexx();
 }
 
 function addListSignUp(){
@@ -72,16 +90,22 @@ function addListSignUp(){
      
         email:email_signup.value,
         pass:pass_signup.value,
-        
         name:name_signup.value
 
     }
-    if(checkemailsignup(email_signup.value)&&checkpasssignup(pass_signup.value)&&checkename(name_signup.value)){
-        listsignup.push(signup_object)
-        document.querySelector('.alrt').style.display='none'
+    users=JSON.parse(localStorage.getItem('users'));
+    match_arr=users.filter((el)=> el.email==signup_object.email )
+    if(match_arr.length){
+        console.log("this username already exists");
+        document.querySelector('.alrt').style.display='block';
+    }
+    else if(checkemailsignup(email_signup.value)&&checkpasssignup(pass_signup.value)&&checkename(name_signup.value)){
+        users.push(signup_object)
+        document.querySelector('.alrt').style.display='none';
+        localStorage.setItem('users',JSON.stringify(users))
     }
     else{
-        document.querySelector('.alrt').style.display='block'
+        document.querySelector('.alrt').style.display='block';
     }
    
 }
@@ -92,18 +116,24 @@ function clearindexx(){
     name_signup.value=""
 }
 function checkemailsignup(email){
-    var regex=/^[A-Za-z0-9]{2,20}@gmail.com$/
-    return regex.test(email)
+    var regex=/^[A-Za-z0-9]{2,20}@[a-zA-z0-9]{2}$/
+    return true
 }
 function checkpasssignup(pass){
     var regex= /^[a-zA-Z0-9!@#$%^&*]{6,16}$/
-    return regex.test(pass)
+    return true
 }
 function checkename(name){
-    var regex=  /^[a-zA-Z ]{2,30}$/
+    var regex=  /^[a-zA-Z]{2,30}$/
     return regex.test(name)
 }
 
+function handleForm(event) { event.preventDefault(); } 
+
+var form1 = document.getElementById("myForm");
+var form2 = document.getElementById("myForm2");
+
+form1.addEventListener('submit', handleForm);
+form2.addEventListener('submit', handleForm);
 
 
- 
