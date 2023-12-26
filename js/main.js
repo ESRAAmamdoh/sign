@@ -1,5 +1,6 @@
 let btn_signin=document.querySelector('.btnSignin');
 let btn_signup=document.querySelector('.btnSignup');
+
 let body=document.querySelector('body');
 
  btn_signup.onclick= function(){
@@ -17,7 +18,9 @@ var email_signup=document.getElementById('emailsignup')
 var pass_signup=document.getElementById('passsignup')
 
 var name_signup=document.getElementById('nameValue')
-
+var email_update=document.getElementById('emailupdate');
+var pass_update=document.getElementById('passupdate');
+var email_logout=document.getElementById('emaillogout');
 var users=[]
 if(localStorage.getItem('users')!=null){
     users=JSON.parse(localStorage.getItem('users'))
@@ -29,7 +32,7 @@ else{
 
 function main(){
     addlist()
-   console.log(listsignin)
+  
    clearindex()
  
 }
@@ -47,6 +50,8 @@ function addlist(){
             //success
             document.querySelector('.alr').style.display='none'
             document.querySelector('.sucss').style.display='block'
+            localStorage.setItem('active',JSON.stringify(sign_object.email))
+            window.location.replace("./blank.html")
         }
         else{
             //failed
@@ -62,6 +67,33 @@ function addlist(){
     }
    
 }
+function logout(){
+    active_users=JSON.parse(localStorage.getItem('active'));
+    em_index=users.findIndex((el)=> el.email==active_users)
+   
+    if(em_index>-1){
+        users.splice(em_index,1)
+       localStorage.setItem('users',JSON.stringify(users))
+     active_users="";
+    }
+
+}
+function updatelist(){
+    users=JSON.parse(localStorage.getItem('users'));
+    index=users.findIndex((el)=> el.email==email_update.value)
+    if(index>-1){
+       users[index].pass=pass_update.value;
+       localStorage.setItem('users',JSON.stringify(users))
+    
+        document.querySelector('.alro').style.display='none'
+        document.querySelector('.apdate').style.display='block'
+    }
+    else{
+        document.querySelector('.alro').style.display='block'
+        document.querySelector('.apdate').style.display='none'
+    }
+}
+
 function clearindex(){
     email_value.value=""
     pass_value.value=""
@@ -78,7 +110,7 @@ function checkepass(pass){
 
 
 
-var listsignup=[]
+
 
 function mainSignUp(){
     addListSignUp();
@@ -98,17 +130,21 @@ function addListSignUp(){
     if(match_arr.length){
         console.log("this username already exists");
         document.querySelector('.alrt').style.display='block';
+        document.querySelector('.register').style.display='none';
     }
     else if(checkemailsignup(email_signup.value)&&checkpasssignup(pass_signup.value)&&checkename(name_signup.value)){
         users.push(signup_object)
         document.querySelector('.alrt').style.display='none';
         localStorage.setItem('users',JSON.stringify(users))
+        document.querySelector('.register').style.display='block';
     }
     else{
+        document.querySelector('.register').style.display='none';
         document.querySelector('.alrt').style.display='block';
     }
    
 }
+
 function clearindexx(){
     email_signup.value=""
     pass_signup.value=""
@@ -132,8 +168,9 @@ function handleForm(event) { event.preventDefault(); }
 
 var form1 = document.getElementById("myForm");
 var form2 = document.getElementById("myForm2");
+var form3 = document.getElementById("myForm3");
 
 form1.addEventListener('submit', handleForm);
 form2.addEventListener('submit', handleForm);
-
+form3.addEventListener('submit', handleForm);
 

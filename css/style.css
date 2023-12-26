@@ -139,7 +139,11 @@ background: #fff;
     text-transform: uppercase;
     letter-spacing: 0.1em;
 }
-
+.logout{
+    color: #333;
+    letter-spacing: 0.05em;
+    font-size: 0.8em;
+}
 
 .forget{
     color: #333;
@@ -157,5 +161,17 @@ background: #fff;
 .sucss{
     padding-inline: 6rem;
     display: none;
-    ba
+    
+}
+.register{
+    padding-inline: 6rem;
+    display: none;
+}
+.apdate{
+    padding-inline: 6rem;
+    display: none;
+}
+.alro{
+    padding-inline: 6rem;
+    display: none;
 }

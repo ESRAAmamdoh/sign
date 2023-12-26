@@ -28,12 +28,13 @@
             <h3>Sign In</h3>
             <input type="email" id="emailsignin" class="form-control emailvalue" placeholder=" email" required>
             <input type="password" id="passsignin" class="form-control my-4 passValue" placeholder=" password" required pattern="^[a-zA-Z0-9!@#$%^&*]{6,16}$">
-            <div class="alert alert-danger alr">invalid </div>
-            <div class="alert alert-success sucss">sucsecc </div>
+            <div class="alert alert-danger alr py-2">invalid </div>
+            <div class="alert alert-success sucss py-2">sucsecc </div>
             <!-- <input onclick="main()" type="submit" class="btn btn-danger px-5 mb-4 py-3"value="Login"> -->
             <!-- <button onclick="main()" class="btn px-5 mb-4 py-3 btn-danger login">Login</button> -->
             <button onclick="main()" class="btn btn-danger px-5 mb-4 py-3 login"> login</button>
-            <a href="#" class="forget">Forget password</a>
+            <a href="update.html"  class="forget">Forget password</a>
+            <!-- <a href="logout.html"  class="forget">Log Out</a> -->
         </form>
     </div>
     <div class="form formsignup">
@@ -43,7 +44,8 @@
             <input type="email" class="form-control newfocus my-4 " id="emailsignup" placeholder=" email" required>
             <input type="password" class="form-control newfocus mb-4 " id="passsignup" placeholder=" password" required pattern="^[a-zA-Z0-9!@#$%^&*]{6,16}$">
             <!-- <input type="password" class="form-control newfocus  my-4 " id="confirmsighup" placeholder=" confirm"> -->
-            <div class="alert alert-danger alrt">invalid </div>
+            <div class="alert alert-danger alrt py-2">invalid </div>
+            <div class="alert alert-success register py-2">valid </div>
             <!-- <input type="submit" class="btn btn-success px-5  py-3" value="Register"> -->
             <button onclick="mainSignUp()" class="btn px-5 mb-4 py-3 btn-danger signup">Register</button>
          
